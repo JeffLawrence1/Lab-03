@@ -1,0 +1,15 @@
+    
+h2 {
+  font-family: 'Muli', sans-serif;
+};
+
+p {
+  font-family: 'Oswald', sans-serif;
+}
+
+footer {
+  background-color: grey;
+  padding: 20px;
+  color: lightblue;
+  text-align: center;
+}
