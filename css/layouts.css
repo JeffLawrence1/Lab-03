@@ -3,3 +3,15 @@ input {
   height: 50px;
   background-color: lightblue;
 }
+
+nav {
+  text-align: center;
+  background-color: rgb(0, 255, 13);
+  padding: 20px;
+}
+
+h1 {
+  font-size: 46px;
+  background-color: grey;
+  padding: 20px;
+}

@@ -38,6 +38,18 @@ Estimate of time needed to complete: half hour
 
 Start time: 11:12
 
+Finish time: 11:32
+
+Actual time needed to complete:  20 minutes
+
+# Feature Four - Sort the images
+
+Number and name of feature: Feature Four Sort the images
+
+Estimate of time needed to complete: half hour
+
+Start time: 11:33
+
 Finish time: 
 
-Actual time needed to complete:  
+Actual time needed to complete: 

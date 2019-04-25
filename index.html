@@ -9,15 +9,19 @@
   <body>
     <header>
       <h1>The Gallery of Horns</h1>
-      <input id="pageOne" type="button" value="Page One"></input>
-      <input id="pageTwo" type="button" value="Page Two"></input>
-      <select name="animals" id="selectBox">
-        <option value="default">Filter by Keyword</option>
-        <template id="animalList">
-          <option value="{{keyword}}">{{keyword}}</option>
-        </template>
-      </select>
-    </header>
+      <nav>
+        <input id="pageOne" type="button" value="Page One"></input>
+        <input id="pageTwo" type="button" value="Page Two"></input>
+        <select name="animals" id="selectBox">
+          <option value="default">Filter by Keyword</option>
+          <template id="animalList">
+            <option value="{{keyword}}">{{keyword}}</option>
+          </template>
+        </select>
+        <input id="title" type="button" value="Sort by Title"></input>
+        <input id="horns" type="button" value="Sort by Horns"></input>
+      </nav>
+    </header>    
     <main>
       <template id="photo-template">
         <section>
