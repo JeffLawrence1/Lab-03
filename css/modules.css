@@ -6,3 +6,10 @@ h2 {
 p {
   font-family: 'Oswald', sans-serif;
 }
+
+footer {
+  background-color: grey;
+  padding: 20px;
+  color: lightblue;
+  text-align: center;
+}

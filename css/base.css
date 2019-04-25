@@ -2,17 +2,24 @@
 @import url('./layouts.css');
 @import url('./modules.css');
 
-
+main {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
 section {
-  float: left;
+  width: 300px;
   margin: 40px;
 }
 
 img {
   height: 200px;
+  width: 100%;
 }
 
 h1 {
   text-align: center;
   font-family: 'Muli', sans-serif;
 }
+
+
