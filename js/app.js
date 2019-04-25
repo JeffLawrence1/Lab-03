@@ -85,8 +85,28 @@ let pageTwoSelector = () => {
   readJson(pageTwo);
 };
 
+//Sort functions
+let titleSort = () => {
+
+};
+
+let hornSort = () => {
+  animalArray.forEach( () => {
+    animalArray.sort( (a,b) => {
+      return a.horns - b.horns;
+    });
+    return animalArray;
+  });
+  $('section').remove();
+  loadAnimals();
+};
+
 //Button event handlers to switch pages
 $('#pageOne').on('click', pageOneSelector);
 $('#pageTwo').on('click', pageTwoSelector);
+
+//Button event handlers to sort
+$('#title').on('click', titleSort);
+$('#horns').on('click', hornSort);
 //start it off
 $(() => readJson(pageOne));
