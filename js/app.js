@@ -35,7 +35,7 @@ const readJson = (pageNumber) => {
         animalArray.push(new Animal(animal));
       });
     })
-    .then(loadAnimals);
+    .then(titleSort);
 };
 
 //read global array activate render
@@ -87,7 +87,20 @@ let pageTwoSelector = () => {
 
 //Sort functions
 let titleSort = () => {
-
+  animalArray.forEach( () => {
+    animalArray.sort( (a,b) => {
+      if(a.title < b.title){
+        return -1;
+      }
+      if(a.title > b.title){
+        return 1;
+      }
+      return 0;
+    });
+    return animalArray;
+  });
+  $('section').remove();
+  loadAnimals();
 };
 
 let hornSort = () => {
