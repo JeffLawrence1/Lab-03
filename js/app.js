@@ -53,6 +53,7 @@ Animal.prototype.toHtml = function() {
 const readJson = (pageNumber) => {
   // Animal.holdingArray = [];
   // console.log(Animal.holdingArray);
+  animalArray = [];
   $.get(pageNumber)
     .then(animalData => {
       animalData.forEach(animal => {
@@ -66,7 +67,7 @@ const readJson = (pageNumber) => {
 //read global array activate render function
 const loadAnimals = () => {
   animalArray.forEach(animal => {
-    console.log(animal);
+    // console.log(animal);
     $('main').append(animal.toHtml());
     // animal.toHtml();
   });
@@ -117,12 +118,12 @@ $('#selectBox').on('change', animalSelector);
 let pageOneSelector = () => {
   // Animal.holdingArray = [];
   $('section').remove();
-  Animal.readJson(pageOne);
+  readJson(pageOne);
 };
 let pageTwoSelector = () => {
   // Animal.holdingArray = [];
   $('section').remove();
-  Animal.readJson(pageTwo);
+  readJson(pageTwo);
 };
 
 
