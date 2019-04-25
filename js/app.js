@@ -56,7 +56,16 @@ const loadAnimals = () => {
 
 const dropDrown = () => {
   animalArray.forEach(animal => {
-    $('select').append(animal.toDropdown());
+    let exists = false;
+    $('#selectBox option').each(function(){
+      if(this.value === animal.keyword){
+        exists = true;
+      }
+    });
+    if(exists === false){
+      //add element to parent
+      $('select').append(animal.toDropdown());
+    }  
   });
 };
 //Event handler function
@@ -85,7 +94,7 @@ $('#selectBox').on('change', animalSelector);
 //     //add element content
 //     $animalListClone.find('option').attr('value', animal.keyword).text(animal.keyword);
 
-//     //add logic to ensure keywords are not repeated in the dropdown menu
+// //     //add logic to ensure keywords are not repeated in the dropdown menu
 //     let exists = false;
 //     $('#selectBox option').each(function(){
 //       if(this.value === animal.keyword){
