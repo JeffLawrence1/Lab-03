@@ -1,6 +1,9 @@
 'use strict';
 //global array to hold pictures
-Animal.holdingArray =[];
+
+
+const pageOne = './data/page-1.json';
+const pageTwo = './data/page-2.json';
 
 // constructor - has to be function because uses this
 function Animal(animal){
@@ -9,8 +12,10 @@ function Animal(animal){
   this.description = animal.description;
   this.horns = animal.horns;
   this.keyword = animal.keyword;
-}
 
+
+}
+Animal.holdingArray =[];
 
 // render prototype --- has to be function because uses this
 Animal.prototype.render = function() {
@@ -32,8 +37,10 @@ Animal.prototype.render = function() {
 };
 
 // read json
-Animal.readJson = () => {
-  $.get('./data/page-1.json')
+Animal.readJson = (pageNumber) => {
+  Animal.holdingArray = [];
+  console.log(Animal.holdingArray);
+  $.get(pageNumber)
     .then(animalData => {
       animalData.forEach(animal => {
         Animal.holdingArray.push(new Animal(animal));
@@ -87,8 +94,19 @@ const dropDrown = () => {
 
   });
 };
+let pageOneSelector = () => {
+  // Animal.holdingArray = [];
+  $('section').remove();
+  Animal.readJson(pageOne);
+};
+let pageTwoSelector = () => {
+  // Animal.holdingArray = [];
+  $('section').remove();
+  Animal.readJson(pageTwo);
+};
+
 
 $('#pageOne').on('click', pageOneSelector);
 $('#pageTwo').on('click', pageTwoSelector);
 //start it off
-$(() => Animal.readJson());
+$(() => Animal.readJson(pageOne));
