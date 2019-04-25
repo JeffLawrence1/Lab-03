@@ -1,12 +1,13 @@
 'use strict';
-//global array to hold pictures
 
-
+//global variables
 const pageOne = './data/page-1.json';
 const pageTwo = './data/page-2.json';
 
+//global array to hold animals
 let animalArray = [];
 
+//constructor function
 function Animal(obj) {
   for(let key in obj){
     this[key] = obj[key];
@@ -26,34 +27,27 @@ Animal.prototype.toDropdown = function() {
 };
 // read json
 const readJson = (pageNumber) => {
-  // Animal.holdingArray = [];
-  // console.log(Animal.holdingArray);
+
   animalArray = [];
   $.get(pageNumber)
     .then(animalData => {
       animalData.forEach(animal => {
         animalArray.push(new Animal(animal));
       });
-      // console.log(animalArray);
     })
     .then(loadAnimals);
 };
 
-//read global array activate render function
+//read global array activate render
 const loadAnimals = () => {
   animalArray.forEach(animal => {
-    // console.log(animal);
-    $('main').append(animal.toHtml());
-    // animal.toHtml();
 
+    $('main').append(animal.toHtml());
   });
-  // animalArray.forEach(newAnimal => {
-  //   $('main').append(newAnimal.toHtml());
-  // });
-  //load dropdown menu
   dropDrown();
 };
 
+//function to build and display dropdown menu
 const dropDrown = () => {
   animalArray.forEach(animal => {
     let exists = false;
@@ -65,9 +59,10 @@ const dropDrown = () => {
     if(exists === false){
       //add element to parent
       $('select').append(animal.toDropdown());
-    }  
+    }
   });
 };
+
 //Event handler function
 let animalSelector = (event) => {
   $('section').hide();
@@ -78,37 +73,7 @@ let animalSelector = (event) => {
 //Drop-down list event handler
 $('#selectBox').on('change', animalSelector);
 
-// const dropFunction = () => {
-//   let source = $('#animalList').html();
-//   let template = Handlebars.compile(source);
-//   return template(this);
-// }
-
-//dropdown menu loader function
-// const dropDrown = () => {
-//   Animal.holdingArray.forEach( (animal) => {
-
-//     let animalListClone = $('#animalList').clone();
-//     let $animalListClone = $(animalListClone[0].content);
-
-//     //add element content
-//     $animalListClone.find('option').attr('value', animal.keyword).text(animal.keyword);
-
-// //     //add logic to ensure keywords are not repeated in the dropdown menu
-//     let exists = false;
-//     $('#selectBox option').each(function(){
-//       if(this.value === animal.keyword){
-//         exists = true;
-//       }
-//     });
-
-//     if(exists === false){
-//       //add element to parent
-//       $animalListClone.appendTo('select');
-//     }
-
-//   });
-// };
+// Json page selector functions
 let pageOneSelector = () => {
   // Animal.holdingArray = [];
   $('section').remove();
@@ -120,7 +85,7 @@ let pageTwoSelector = () => {
   readJson(pageTwo);
 };
 
-
+//Button event handlers to switch pages
 $('#pageOne').on('click', pageOneSelector);
 $('#pageTwo').on('click', pageTwoSelector);
 //start it off
