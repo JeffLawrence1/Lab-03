@@ -20,6 +20,7 @@ Animal.prototype.render = function() {
   let $animalClone = $(animalClone[0].content);
 
   // add the element content
+  $animalClone.find('img').attr('value', this.keyword);
   $animalClone.find('h2').text(this.title);
   $animalClone.find('img').attr('src', this.imageUrl);
   $animalClone.find('p').text(this.description);
@@ -29,8 +30,6 @@ Animal.prototype.render = function() {
   $animalClone.appendTo('main');
 
 };
-
-
 
 // read json
 Animal.readJson = () => {
@@ -43,15 +42,53 @@ Animal.readJson = () => {
     .then(Animal.loadAnimals);
 };
 
-
-
 //read global array activate render function
 Animal.loadAnimals = () => {
   Animal.holdingArray.forEach(animal => {
     animal.render();
   });
+  //load dropdown menu
+  dropDrown();
 };
 
+//Event handler function
+let animalSelector = (event) => {
+  $('section').hide();
+  let img = $(`img[value="${event.target.value}"]`).parent();
+  $(img).show();
+};
 
+//Drop-down list event handler
+$('#selectBox').on('change', animalSelector);
+
+
+//dropdown menu loader function
+const dropDrown = () => {
+  Animal.holdingArray.forEach( (animal) => {
+
+    let animalListClone = $('#animalList').clone();
+    let $animalListClone = $(animalListClone[0].content);
+
+    //add element content
+    $animalListClone.find('option').attr('value', animal.keyword).text(animal.keyword);
+
+    //add logic to ensure keywords are not repeated in the dropdown menu
+    let exists = false;
+    $('#selectBox option').each(function(){
+      if(this.value === animal.keyword){
+        exists = true;
+      }
+    });
+
+    if(exists === false){
+      //add element to parent
+      $animalListClone.appendTo('select');
+    }
+
+  });
+};
+
+$('#pageOne').on('click', pageOneSelector);
+$('#pageTwo').on('click', pageTwoSelector);
 //start it off
 $(() => Animal.readJson());

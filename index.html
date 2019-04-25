@@ -4,12 +4,18 @@
     <title>The Gallery of Horns</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/base.css">
+    <link href="https://fonts.googleapis.com/css?family=Muli|Oswald" rel="stylesheet">
   </head>
   <body>
     <header>
       <h1>The Gallery of Horns</h1>
-      <select>
+      <input id="pageOne" type="button" value="Page One"></input>
+      <input id="pageTwo" type="button" value="Page Two"></input>
+      <select name="animals" id="selectBox">
         <option value="default">Filter by Keyword</option>
+        <template id="animalList">
+          <option value=""></option>
+        </template>
       </select>
     </header>
     <main>
