@@ -6,17 +6,6 @@ const pageOne = './data/page-1.json';
 const pageTwo = './data/page-2.json';
 
 let animalArray = [];
-// constructor - has to be function because uses this
-// function Animal(animal){
-//   this.title = animal.title;
-//   this.imageUrl = animal.image_url;
-//   this.description = animal.description;
-//   this.horns = animal.horns;
-//   this.keyword = animal.keyword;
-
-
-// }
-// Animal.holdingArray =[];
 
 function Animal(obj) {
   for(let key in obj){
@@ -30,25 +19,11 @@ Animal.prototype.toHtml = function() {
   return template(this);
 };
 
-// render prototype --- has to be function because uses this
-// Animal.prototype.render = function() {
-// // create the element
-//   let animalClone = $('#photo-template').clone();
-//   // reassigning to jquery variable to be able to use jquery
-//   let $animalClone = $(animalClone[0].content);
-
-//   // add the element content
-//   $animalClone.find('img').attr('value', this.keyword);
-//   $animalClone.find('h2').text(this.title);
-//   $animalClone.find('img').attr('src', this.imageUrl);
-//   $animalClone.find('p').text(this.description);
-//   $animalClone.find('h3').text(`Number of Horns: ${this.horns}`);
-
-//   // add element to parent
-//   $animalClone.appendTo('main');
-
-// };
-
+Animal.prototype.toDropdown = function() {
+  let source = $('#animalList').html();
+  let template = Handlebars.compile(source);
+  return template(this);
+};
 // read json
 const readJson = (pageNumber) => {
   // Animal.holdingArray = [];
@@ -70,15 +45,20 @@ const loadAnimals = () => {
     // console.log(animal);
     $('main').append(animal.toHtml());
     // animal.toHtml();
+
   });
   // animalArray.forEach(newAnimal => {
   //   $('main').append(newAnimal.toHtml());
   // });
   //load dropdown menu
-  // dropDrown();
+  dropDrown();
 };
 
-
+const dropDrown = () => {
+  animalArray.forEach(animal => {
+    $('select').append(animal.toDropdown());
+  });
+};
 //Event handler function
 let animalSelector = (event) => {
   $('section').hide();
@@ -89,6 +69,11 @@ let animalSelector = (event) => {
 //Drop-down list event handler
 $('#selectBox').on('change', animalSelector);
 
+// const dropFunction = () => {
+//   let source = $('#animalList').html();
+//   let template = Handlebars.compile(source);
+//   return template(this);
+// }
 
 //dropdown menu loader function
 // const dropDrown = () => {
