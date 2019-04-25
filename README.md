@@ -50,6 +50,6 @@ Estimate of time needed to complete: half hour
 
 Start time: 11:33
 
-Finish time: 
+Finish time: 12:10
 
-Actual time needed to complete: 
+Actual time needed to complete: 37 minutes
